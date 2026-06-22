@@ -46,8 +46,8 @@
         .logo-text { font-size: 26px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 35px; }
         .logo-text span { color: #ff3333; text-shadow: 0 0 8px rgba(255, 51, 51, 0.4); }
 
-        .input-group { margin-bottom: 20px; text-align: left; }
-        .input-group label { display: block; margin-bottom: 8px; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px; }
+        .input-group { margin-bottom: 24px; text-align: left; }
+        .input-group label.group-label { display: block; margin-bottom: 10px; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px; }
         .input-group input, .input-group select, .input-group textarea {
             width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.06);
             background-color: rgba(20, 20, 20, 0.6); color: #fff; font-size: 14px; transition: all 0.3s ease;
@@ -55,6 +55,22 @@
         .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
             border-color: rgba(255, 51, 51, 0.6); outline: none; background-color: rgba(25, 15, 15, 0.5);
             box-shadow: 0 0 15px rgba(255, 51, 51, 0.1);
+        }
+
+        /* КРАСИВЫЕ КНОПКИ-ПЛИТКИ (RADIO TILES) ДЛЯ ВЫБОРА КАТЕГОРИЙ */
+        .tiles-container { display: flex; gap: 15px; width: 100%; }
+        .tile-card {
+            flex: 1; padding: 16px; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px; cursor: pointer; text-align: center; font-size: 13px; font-weight: 500;
+            color: #aaa; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; user-select: none;
+        }
+        .tile-card:hover {
+            color: #fff; border-color: rgba(255, 51, 51, 0.4); background: rgba(25, 15, 15, 0.3);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.08);
+        }
+        .tile-card.selected {
+            background: rgba(255, 51, 51, 0.08); border-color: #ff3333; color: #fff;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.15);
         }
 
         button {
@@ -107,18 +123,21 @@
         .reports-list { height: calc(100vh - 180px); }
         .admin-table-wrapper { height: 240px; margin-bottom: 30px; }
         
-        .report-card { background: rgba(20, 20, 20, 0.4); border: 1px solid rgba(255, 255, 255, 0.04); border-left: 3px solid #ff3333; padding: 20px; margin-bottom: 15px; border-radius: 8px; position: relative; }
-        .report-badge { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); padding: 5px 10px; border-radius: 6px; font-size: 11px; color: #aaa; }
-        .inline-group { display: flex; gap: 20px; }
+        /* КАРТОЧКИ ЖАЛОБ И ЦВЕТА СТАТУСОВ */
+        .report-card { background: rgba(20, 20, 20, 0.4); border: 1px solid rgba(255, 255, 255, 0.04); border-left: 3px solid #666; padding: 20px; margin-bottom: 15px; border-radius: 8px; position: relative; }
+        .report-badge { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        /* Стили кастомного аватара в личном кабинете */
+        /* Кнопки управления статусом для админов */
+        .admin-actions-row { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 15px; flex-wrap: wrap; }
+        .btn-status { width: auto; margin: 0; padding: 6px 12px; font-size: 11px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: #aaa; }
+        .btn-status:hover { background: rgba(255,255,255,0.08); color: #fff; box-shadow: none; }
+        
         .avatar-wrapper { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
         .profile-avatar { width: 80px; height: 80px; border-radius: 50%; border: 2px solid #ff3333; object-fit: cover; background: #222; }
         .btn-upload-label { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px 16px; border-radius: 6px; font-size: 12px; cursor: pointer; transition: 0.3s; }
         .btn-upload-label:hover { background: rgba(255,51,51,0.1); border-color: #ff3333; }
         
-        /* Прикрепленный скриншот в жалобах */
-        .attached-img { max-width: 200px; max-height: 120px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px; display: block; }
+        .attached-img { max-width: 200px; max-height: 120px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px; display: block; cursor: pointer; }
 
         table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
         th, td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
@@ -128,10 +147,6 @@
         .btn-save { background: rgba(46, 204, 113, 0.15); border: 1px solid rgba(46, 204, 113, 0.3); color: #2ecc71; padding: 6px 12px; font-size: 11px; border-radius: 6px; width: auto; margin: 0; border: none; cursor: pointer; }
         .btn-save:hover { background: #2ecc71; color: #fff; }
     </style>
-</head>
-<body>
-
-<div class="center-dot"></div>
     <!-- ЦЕНТРАЛЬНЫЙ БЛОК АВТОРИЗАЦИИ -->
     <div id="authContainerBlock" class="auth-container">
         <div id="msg" class="message"></div>
@@ -217,39 +232,54 @@
                     </form>
                 </div>
             </div>
-
-            <!-- ВКЛАДКА: ФОРМА ПОДАЧИ ЖАЛОБЫ (Со скрепкой для фото) -->
+            <!-- ВКЛАДКА: ФОРМА ПОДАЧИ ЖАЛОБЫ (Новый дизайн с плитками) -->
             <div id="reportFormTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Подача нового обращения</h2>
                 <form id="reportForm" style="max-width: 600px;">
-                    <div class="inline-group">
-                        <div class="input-group" style="flex:1;">
-                            <label for="rep_category">Категория обращения</label>
-                            <select id="rep_category" required>
-                                <option value="player">Жалоба на игрока (Рассматривает Администрация)</option>
-                                <option value="admin">Жалоба на администратора (Рассматривает Руководство)</option>
-                            </select>
-                        </div>
-                        <div class="input-group" style="flex:1;">
-                            <label for="rep_type">Режим конфиденциальности</label>
-                            <select id="rep_type" required>
-                                <option value="public">Публичная (Для всех пользователей)</option>
-                                <option value="anon">Анонимная (Скрыть мое имя)</option>
-                            </select>
+                    
+                    <!-- ДИНАМИЧЕСКИЕ ПЛИТКИ: КАТЕГОРИЯ ОБРАЩЕНИЯ -->
+                    <div class="input-group">
+                        <label class="group-label">Категория обращения</label>
+                        <div class="tiles-container" id="categoryTiles">
+                            <div class="tile-card selected" data-value="player">
+                                🛡️ На игрока<br>
+                                <span style="font-size: 11px; color: #666; margin-top: 4px; display: block;">Смотрит Администрация</span>
+                            </div>
+                            <div class="tile-card" data-value="admin">
+                                👥 На администратора<br>
+                                <span style="font-size: 11px; color: #666; margin-top: 4px; display: block;">Смотрит Руководство</span>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- ДИНАМИЧЕСКИЕ ПЛИТКИ: КОНФИДЕНЦИАЛЬНОСТЬ -->
                     <div class="input-group">
-                        <label for="rep_target">Никнейм подозреваемого / нарушителя</label>
+                        <label class="group-label">Режим конфиденциальности</label>
+                        <div class="tiles-container" id="privacyTiles">
+                            <div class="tile-card selected" data-value="public">
+                                🌐 Публичная жалоба<br>
+                                <span style="font-size: 11px; color: #666; margin-top: 4px; display: block;">Видна всем в архиве</span>
+                            </div>
+                            <div class="tile-card" data-value="anon">
+                                🕵️ Анонимное обращение<br>
+                                <span style="font-size: 11px; color: #666; margin-top: 4px; display: block;">Скрыть никнейм автора</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="rep_target" class="group-label">Никнейм подозреваемого / нарушителя</label>
                         <input type="text" id="rep_target" required placeholder="Например: Nick_Name">
                     </div>
+                    
                     <div class="input-group">
-                        <label for="rep_text">Подробная суть вашей жалобы</label>
-                        <textarea id="rep_text" rows="5" required placeholder="Опишите хронологию событий..."></textarea>
+                        <label for="rep_text" class="group-label">Подробная суть вашей жалобы</label>
+                        <textarea id="rep_text" rows="5" required placeholder="Опишите хронологию событий и укажите факты нарушений..."></textarea>
                     </div>
                     
                     <!-- КНОПКА-СКРЕПКА ДЛЯ ДОКАЗАТЕЛЬСТВ -->
                     <div class="input-group">
-                        <label>Доказательства (Скриншот/Фото)</label>
+                        <label class="group-label">Доказательства (Скриншот/Фото)</label>
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <input type="file" id="rep_file" accept="image/*" style="display: none;">
                             <label for="rep_file" class="btn-upload-label">📎 Прикрепить изображение</label>
@@ -260,14 +290,13 @@
                     <button type="submit" style="max-width: 300px;">Направить жалобу</button>
                 </form>
             </div>
-
             <!-- ВКЛАДКА: СПИСОК ЖАЛОБ -->
             <div id="reportsListTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Архив зарегистрированных обращений</h2>
                 <div class="reports-list" id="reportsListWindow"></div>
             </div>
 
-            <!-- ВКЛАДКА: ЛИЧНЫЙ КАБИНЕТ (С изменением картинки аватара) -->
+            <!-- ВКЛАДКА: ЛИЧНЫЙ КАБИНЕТ -->
             <div id="profileTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Управление профилем</h2>
                 
@@ -281,7 +310,6 @@
                 <div style="max-width: 450px; background: rgba(15,15,15,0.6); padding: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04);">
                     <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #ff3333; margin-bottom: 25px;">Фотография профиля</h3>
                     
-                    <!-- ИЗМЕНЕНИЕ КАРТИНКИ -->
                     <div class="avatar-wrapper">
                         <img src="" id="profileAvatarImg" class="profile-avatar" alt="Avatar">
                         <div>
@@ -293,31 +321,31 @@
                     <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #ff3333; margin: 25px 0 20px 0;">Безопасность учетной записи</h3>
                     <form id="changePasswordForm">
                         <div class="input-group">
-                            <label for="profile_old_pass">Действующий пароль</label>
+                            <label for="profile_old_pass" class="group-label">Действующий пароль</label>
                             <input type="password" id="profile_old_pass" required placeholder="••••••••">
                         </div>
                         <div class="input-group">
-                            <label for="profile_new_pass">Новый безопасный пароль</label>
+                            <label for="profile_new_pass" class="group-label">Новый безопасный пароль</label>
                             <input type="password" id="profile_new_pass" required placeholder="••••••••">
                         </div>
                         <button type="submit">Обновить пароль</button>
                     </form>
                 </div>
             </div>
-            <!-- ВКЛАДКА: ПАНЕЛЬ OWNER (С формой добавления ролей) -->
+
+            <!-- ВКЛАДКА: ПАНЕЛЬ OWNER -->
             <div id="ownerTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Панель Создателя</h2>
                 
-                <!-- ФОРМА ДОБАВЛЕНИЯ НОВЫХ ДОЛЖНОСТЕЙ -->
                 <h3 style="color: #ff3333; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px;">Создание новой системы / роли</h3>
                 <div style="background: rgba(15,15,15,0.6); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); margin-bottom: 35px; max-width: 500px;">
                     <form id="addRoleForm">
                         <div class="input-group">
-                            <label for="new_role_name">Название новой роли (например: Куратор)</label>
+                            <label for="new_role_name" class="group-label">Название новой роли (например: Куратор)</label>
                             <input type="text" id="new_role_name" required placeholder="Введите название">
                         </div>
                         <div class="input-group">
-                            <label for="new_role_key">Секретный пароль для этой роли</label>
+                            <label for="new_role_key" class="group-label">Секретный пароль для этой роли</label>
                             <input type="text" id="new_role_key" required placeholder="Введите секретный ключ">
                         </div>
                         <button type="submit" style="background: #27ae60; max-width: 200px; margin-top: 5px;">Создать роль</button>
@@ -347,10 +375,16 @@
 
         </div> <!-- Конец main-content -->
     </div> <!-- Конец dashboard-layout -->
-
 <!-- НАЧАЛО БЛОКА СКРИПТОВ -->
 <script>
-    // Инициализация исходных мастер-паролей для систем должностей
+    // Первоначальное обнуление старых баз при первом запуске обновленного кода дашборда
+    if (!localStorage.getItem('adrenaline_wipe_v3_2026')) {
+        localStorage.removeItem('adrenaline_users');
+        localStorage.removeItem('adrenaline_reports');
+        localStorage.setItem('adrenaline_wipe_v3_2026', 'true');
+    }
+
+    // Инициализация исходных мастер-паролей систем
     if (!localStorage.getItem('adrenaline_role_keys')) {
         const defaultKeys = {
             "Owner": "owner123",
@@ -362,18 +396,22 @@
         localStorage.setItem('adrenaline_role_keys', JSON.stringify(defaultKeys));
     }
 
-    // Базовая иерархия для разграничения прав доступа к жалобам
+    // Иерархия для разграничения прав доступа к чату и жалобам
     const ROLE_HIERARCHY = {
         "Player": 0, "Техник": 1, "Модератор 1-го ранга": 2, 
         "Админ 1-го ранга": 3, "Главный администратор": 4, "Owner": 5
     };
 
+    // Переменные выбранных значений плиток на форме жалоб (по умолчанию 'player' и 'public')
+    let selectedCategory = 'player';
+    let selectedPrivacy = 'public';
+
     // Глобальное состояние текущей сессии
     let currentUser = null;
     let currentRole = "Player";
-    let tempAttachedFileBase64 = ""; // Временное хранилище для прикрепляемого скриншота
+    let tempAttachedFileBase64 = ""; 
 
-    // Основные элементы DOM-дерева интерфейса
+    // Ссылки на элементы интерфейса
     const msg = document.getElementById('msg');
     const authContainerBlock = document.getElementById('authContainerBlock');
     const authBlock = document.getElementById('authBlock');
@@ -388,25 +426,43 @@
         msg.style.display = 'block';
     }
 
-    if (!localStorage.getItem('adrenaline_users')) {
-        localStorage.setItem('adrenaline_users', JSON.stringify({}));
-    }
-    if (!localStorage.getItem('adrenaline_reports')) {
-        localStorage.setItem('adrenaline_reports', JSON.stringify([]));
+    if (!localStorage.getItem('adrenaline_users')) { localStorage.setItem('adrenaline_users', JSON.stringify({})); }
+    if (!localStorage.getItem('adrenaline_reports')) { localStorage.setItem('adrenaline_reports', JSON.stringify([])); }
+
+    // ИНТЕРАКТИВНАЯ ЛОГИКА И НЕОНОВАЯ ПОДСВЕТКА ДЛЯ ПЛИТОК-КАРТОЧЕК
+    function initTilesBehavior(containerId, callback) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        const cards = container.querySelectorAll('.tile-card');
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Снимаем выделение со всех плиток в этом контейнере
+                cards.forEach(c => c.classList.remove('selected'));
+                // Добавляем класс подсветки текущей плитке
+                this.classList.add('selected');
+                // Передаем выбранное значение наружу
+                callback(this.getAttribute('data-value'));
+            });
+        });
     }
 
-    // ИСПРАВЛЕНИЕ: Функция динамического обновления списка ролей на форме регистрации
+    // Активируем обработку кликов по плиткам после загрузки дерева
+    window.addEventListener('DOMContentLoaded', () => {
+        initTilesBehavior('categoryTiles', (val) => { selectedCategory = val; });
+        initTilesBehavior('privacyTiles', (val) => { selectedPrivacy = val; });
+        updateRegisterRoleSelect();
+    });
+
+    // Функция обновления списка должностей при регистрации
     function updateRegisterRoleSelect() {
         const selectEl = document.getElementById('reg_role');
         if (!selectEl) return;
-        
         selectEl.innerHTML = `
             <option value="" disabled selected>-- Выберите роль --</option>
             <option value="Player">Обычный игрок (Без спец-пароля)</option>
         `;
-        
         const currentKeys = JSON.parse(localStorage.getItem('adrenaline_role_keys')) || {};
-        
         Object.keys(currentKeys).forEach(role => {
             const option = document.createElement('option');
             option.value = role;
@@ -415,12 +471,10 @@
         });
     }
 
-    // Слушатель изменения роли на форме регистрации
     document.getElementById('reg_role').addEventListener('change', function() {
         const selectedRole = this.value;
         const keyGroup = document.getElementById('roleKeyGroup');
         const currentKeys = JSON.parse(localStorage.getItem('adrenaline_role_keys'));
-        
         if (selectedRole === "Player" || !currentKeys[selectedRole]) {
             keyGroup.style.display = 'none';
         } else {
@@ -428,19 +482,17 @@
         }
     });
 
-    // Навигационные ссылки переключения экранов Вход / Регистрация
+    // Навигация Вход / Регистрация
     document.getElementById('toRegister').addEventListener('click', () => {
         authBlock.style.display = 'none';
         registerBlock.style.display = 'block';
         msg.style.display = 'none';
     });
-
     document.getElementById('toLogin').addEventListener('click', () => {
         registerBlock.style.display = 'none';
         authBlock.style.display = 'block';
         msg.style.display = 'none';
     });
-
     // ОБРАБОТКА РЕГИСТРАЦИИ ПОЛЬЗОВАТЕЛЯ
     document.getElementById('registerForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -464,7 +516,6 @@
             }
         }
 
-        // Сохранение пользователя с дефолтной пустой аватаркой
         db[user] = { password: pass, role: role, avatar: "" };
         localStorage.setItem('adrenaline_users', JSON.stringify(db));
 
@@ -478,6 +529,7 @@
             msg.style.display = 'none';
         }, 1500);
     });
+
     // ОБРАБОТКА ВХОДА В СИСТЕМУ
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -492,10 +544,9 @@
 
             userBadge.textContent = `${currentUser} [${currentRole}]`;
             authContainerBlock.style.display = 'none';
-            dashboardLayoutBlock.style.display = 'flex'; // Переключаемся на полноэкранный режим
+            dashboardLayoutBlock.style.display = 'flex';
             msg.style.display = 'none';
 
-            // Если зашел Owner — динамически выводим премиум-кнопку управления системами в Sidebar
             const existBtn = document.getElementById('ownerTabBtn');
             if (currentRole === 'Owner' && !existBtn) {
                 const btn = document.createElement('div');
@@ -508,7 +559,6 @@
                 existBtn.remove();
             }
 
-            // Управление отображением виджета чистого онлайна в Личном Кабинете
             const statsGrid = document.getElementById('adminStatsGrid');
             if (ROLE_HIERARCHY[currentRole] >= 2) {
                 statsGrid.style.display = 'flex';
@@ -518,12 +568,10 @@
                 statsGrid.style.display = 'none';
             }
 
-            // Рендерим установленную аватарку пользователя
             const avatarImg = document.getElementById('profileAvatarImg');
             if (db[currentUser].avatar) {
                 avatarImg.src = db[currentUser].avatar;
             } else {
-                // Если аватарки нет — ставим серую заглушку по умолчанию
                 avatarImg.src = "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='80' height='80' viewBox='0 0 24 24' fill='%23666'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>";
             }
 
@@ -538,7 +586,6 @@
         }
     });
 
-    // Выход из личного кабинета
     document.getElementById('logoutBtn').addEventListener('click', () => {
         currentUser = null;
         currentRole = "Player";
@@ -547,7 +594,6 @@
         msg.style.display = 'none';
     });
 
-    // Навигация по боковому меню (Sidebar)
     window.switchSidebarTab = function(tabId, btnEl) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.sidebar-btn').forEach(el => el.classList.remove('active'));
@@ -556,7 +602,6 @@
         if(btnEl) btnEl.classList.add('active');
     };
 
-    // ЛОГИКА ЗАГРУЗКИ И ИЗМЕНЕНИЯ АВАТАРКИ ПРОФИЛЯ
     window.updateProfileAvatar = function(input) {
         const file = input.files[0];
         if (!file) return;
@@ -564,21 +609,15 @@
         const reader = new FileReader();
         reader.onload = function(e) {
             const base64Image = e.target.result;
-            
-            // 1. Отображаем картинку на экране
             document.getElementById('profileAvatarImg').src = base64Image;
-            
-            // 2. Сохраняем её в базу данных локального хранилища для текущего пользователя
             const db = JSON.parse(localStorage.getItem('adrenaline_users'));
             db[currentUser].avatar = base64Image;
             localStorage.setItem('adrenaline_users', JSON.stringify(db));
-            
-            alert("Фотография вашего профиля успешно обновлена!");
+            alert("Фотография профиля обновлена!");
         };
         reader.readAsDataURL(file);
     };
 
-    // Форма самостоятельного изменения пароля
     document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const oldPass = document.getElementById('profile_old_pass').value;
@@ -593,8 +632,9 @@
         alert("Пароль обновлен!");
         this.reset();
     });
+
     // ==========================================
-    // СИСТЕМА ИГРОВОГО RP ЧАТА С ЦВЕТНЫМИ КОМАНДАМИ
+    // СИСТЕМА ИГРОВОГО RP ЧАТА
     // ==========================================
     const chatWindow = document.getElementById('chatWindow');
     let chatMessages = [
@@ -607,13 +647,11 @@
         chatMessages.forEach(msg => {
             const div = document.createElement('div');
             div.className = 'chat-msg';
-            
             if (msg.type === 'me') div.style.color = '#e1a6f2';      
             else if (msg.type === 'do') div.style.color = '#96c2f1'; 
             else if (msg.type === 'try') div.style.color = '#f5b041'; 
             else if (msg.type === 'server') div.style.color = '#3498db'; 
             else div.style.color = '#ffffff';                         
-
             div.textContent = msg.text;
             chatWindow.appendChild(div);
         });
@@ -651,145 +689,6 @@
         renderChat();
         input.value = '';
     });
-
-    // ==========================================
-    // СИСТЕМА ОБРАБОТКИ ЖАЛОБ И СКРЕПКИ ФОТО
-    // ==========================================
-    const reportsListWindow = document.getElementById('reportsListWindow');
-    const repCount = document.getElementById('repCount');
-
-    // Слушатель скрепки: Чтение выбранного скриншота в Base64
-    document.getElementById('rep_file').addEventListener('change', function() {
-        const file = this.files[0];
-        const statusEl = document.getElementById('rep_file_status');
-        
-        if (!file) {
-            tempAttachedFileBase64 = "";
-            statusEl.textContent = "Файл не выбран";
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            tempAttachedFileBase64 = e.target.result;
-            statusEl.textContent = "✓ Картинка успешно прикреплена";
-            statusEl.style.color = "#2ecc71";
-        };
-        reader.readAsDataURL(file);
-    });
-
-    document.getElementById('reportForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const category = document.getElementById('rep_category').value;
-        const type = document.getElementById('rep_type').value;
-        const target = document.getElementById('rep_target').value.trim();
-        const text = document.getElementById('rep_text').value.trim();
-        const reports = JSON.parse(localStorage.getItem('adrenaline_reports'));
-
-        const newReport = {
-            id: Date.now(),
-            author: type === 'anon' ? 'Аноним' : currentUser,
-            category: category, 
-            target: target,
-            text: text,
-            screenshot: tempAttachedFileBase64, // Сохраняем фото со скрепки в БД
-            status: 'На рассмотрении',
-            assignedTo: category === 'player' ? 'Обычная Администрация' : 'Руководство отделов',
-            levelNeeded: category === 'player' ? 2 : 4 
-        };
-
-        reports.push(newReport);
-        localStorage.setItem('adrenaline_reports', JSON.stringify(reports));
-
-        alert("Жалоба со всеми доказательствами отправлена!");
-        this.reset();
-        
-        // Очищаем временную скрепку
-        tempAttachedFileBase64 = "";
-        document.getElementById('rep_file_status').textContent = "Файл не выбран";
-        document.getElementById('rep_file_status').style.color = "#666";
-        
-        renderReports();
-        switchSidebarTab('reportsListTab', document.querySelectorAll('.sidebar-btn'));
-    });
-
-    window.renderReports = function() {
-        reportsListWindow.innerHTML = '';
-        const reports = JSON.parse(localStorage.getItem('adrenaline_reports')) || [];
-        const myLevel = ROLE_HIERARCHY[currentRole] || 0;
-        let visibleCount = 0;
-
-        if (reports.length === 0) {
-            reportsListWindow.innerHTML = '<div style="color: #666; text-align: center; padding: 20px;">Список жалоб пуст.</div>';
-            repCount.textContent = '0';
-            return;
-        }
-
-        reports.forEach(rep => {
-            const isAuthor = (rep.author === currentUser);
-            const isStaff = (myLevel >= 2);
-            const hasAccess = (myLevel >= rep.levelNeeded);
-
-            if (isStaff || !isStaff && (rep.author !== 'Аноним' || isAuthor)) {
-                visibleCount++;
-                
-                const card = document.createElement('div');
-                card.className = 'report-card';
-                card.style.borderLeftColor = rep.category === 'admin' ? '#e74c3c' : '#3498db';
-
-                let actionButton = '';
-                if (isStaff && hasAccess && rep.status !== 'Решено') {
-                    actionButton = `<button onclick="forwardReport(${rep.id})" style="width: auto; background: rgba(255,255,255,0.04); font-size: 11px; padding: 6px 12px; margin-top: 10px; border: 1px solid rgba(255,51,51,0.3); border-radius: 6px;">Передать на роль выше</button>`;
-                }
-
-                // Проверяем наличие скриншота, загруженного через скрепку
-                let imgHtml = '';
-                if (rep.screenshot) {
-                    imgHtml = `<br><strong>Доказательства:</strong><img src="${rep.screenshot}" class="attached-img" alt="Screen" onclick="window.open(this.src)">`;
-                }
-
-                card.innerHTML = `
-                    <div class="report-badge">${rep.status}</div>
-                    <strong style="color: #ff3333;">Жалоба №${rep.id.toString().slice(-4)}</strong><br>
-                    <small style="color: #666;">Отправитель: ${rep.author} | Категория: ${rep.category === 'player' ? 'На игрока' : 'На Администратора'}</small><br>
-                    <p style="margin: 10px 0; font-size: 14px; color: #eee;"><strong>Нарушитель:</strong> ${rep.target}<br><strong>Суть:</strong> ${rep.text}</p>
-                    ${imgHtml}
-                    <div style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-top:10px;">Допуск: <strong>${rep.assignedTo}</strong></div>
-                    ${actionButton}
-                `;
-                reportsListWindow.appendChild(card);
-            }
-        });
-
-        repCount.textContent = visibleCount;
-    };
-
-    window.forwardReport = function(id) {
-        const reports = JSON.parse(localStorage.getItem('adrenaline_reports'));
-        const reportIndex = reports.findIndex(r => r.id === id);
-        if (reportIndex === -1) return;
-
-        const rep = reports[reportIndex];
-
-        if (rep.levelNeeded < 4) {
-            rep.levelNeeded = 4;
-            rep.assignedTo = "Руководство отделов (Head Staff)";
-            rep.status = "Перенаправлена";
-            alert("Жалоба передана Руководителям отделов.");
-        } else if (rep.levelNeeded < 5) {
-            rep.levelNeeded = 5;
-            rep.assignedTo = "Высшая администрация (Owner / Co-Owner)";
-            rep.status = "На рассмотрении у Owner";
-            alert("Жалоба передана Высшей Администрации сервера!");
-        } else {
-            alert("Жалоба уже на самом высоком уровне рассмотрения.");
-            return;
-        }
-
-        localStorage.setItem('adrenaline_reports', JSON.stringify(reports));
-        renderReports();
-    };
     // ==========================================
     // ПАНЕЛЬ OWNER: УПРАВЛЕНИЕ ПАРОЛЯМИ И АККАУНТАМИ
     // ==========================================
@@ -876,7 +775,7 @@
         }
     };
 
-    // ИСПРАВЛЕНИЕ: Прямая и явная привязка формы создания ролей
+    // Слушатель формы динамического создания ролей
     document.getElementById('addRoleForm').addEventListener('submit', function(e) {
         e.preventDefault();
         if (currentRole !== 'Owner') return;
@@ -899,7 +798,6 @@
             return;
         }
 
-        // Записываем и обновляем данные
         currentKeys[newRole] = newKey;
         localStorage.setItem('adrenaline_role_keys', JSON.stringify(currentKeys));
 
@@ -912,14 +810,8 @@
         roleNameInput.value = '';
         roleKeyInput.value = '';
 
-        // Мгновенное обновление интерфейса
         updateRegisterRoleSelect();
         renderOwnerPanels();
-    });
-
-    // Первоначальное построение списка ролей при запуске
-    window.addEventListener('DOMContentLoaded', () => {
-        updateRegisterRoleSelect();
     });
 </script>
 
