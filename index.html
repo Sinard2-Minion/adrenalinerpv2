@@ -19,7 +19,6 @@
             position: relative;
         }
 
-        /* Тонкая неоновая линия и точка по центру экрана */
         body::before {
             content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
             width: 1px; background: linear-gradient(to bottom, transparent, #ff1a1a, transparent);
@@ -31,7 +30,6 @@
             box-shadow: 0 0 12px #ff1a1a; z-index: 2; pointer-events: none; opacity: 0.4;
         }
 
-        /* Окно авторизации (центрированное по центру экрана) */
         .auth-container {
             background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(20px);
@@ -48,7 +46,6 @@
         .logo-text { font-size: 26px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 35px; }
         .logo-text span { color: #ff3333; text-shadow: 0 0 8px rgba(255, 51, 51, 0.4); }
 
-        /* Поля ввода */
         .input-group { margin-bottom: 20px; text-align: left; }
         .input-group label { display: block; margin-bottom: 8px; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px; }
         .input-group input, .input-group select, .input-group textarea {
@@ -68,18 +65,13 @@
         button:hover { background: #e62e2e; box-shadow: 0 0 20px rgba(255, 51, 51, 0.3); }
         .toggle-link { margin-top: 20px; font-size: 13px; color: #666; }
         .toggle-link span { color: #ff3333; cursor: pointer; margin-left: 5px; font-weight: 500; }
-        .toggle-link span:hover { text-decoration: underline; }
         
         .message { padding: 14px; border-radius: 8px; margin-bottom: 25px; font-size: 13px; font-weight: 500; display: none; text-align: center; }
         .success { background-color: rgba(46, 204, 113, 0.06); border: 1px solid rgba(46, 204, 113, 0.3); color: #2ecc71; }
         .error { background-color: rgba(231, 76, 60, 0.06); border: 1px solid rgba(231, 76, 60, 0.3); color: #e74c3c; }
 
-        /* ПОЛНОЭКРАННЫЙ СТРУКТУРНЫЙ МАКЕТ (ИНТЕРФЕЙС ПАНЕЛИ) */
-        .dashboard-layout {
-            display: none; width: 100vw; height: 100vh; z-index: 20; position: absolute; top: 0; left: 0; background: #050505;
-        }
+        .dashboard-layout { display: none; width: 100vw; height: 100vh; z-index: 20; position: absolute; top: 0; left: 0; background: #050505; }
         
-        /* БОКОВОЕ МЕНЮ (SIDEBAR) */
         .sidebar {
             width: 260px; height: 100%; background: #0a0a0a; border-right: 1px solid rgba(255, 255, 255, 0.04);
             display: flex; flex-direction: column; padding: 30px 20px; position: absolute; left: 0; top: 0;
@@ -98,21 +90,15 @@
         .sidebar-footer { border-top: 1px solid rgba(255, 255, 255, 0.04); padding-top: 20px; }
         .user-info-block { font-size: 12px; color: #666; margin-bottom: 12px; padding-left: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-        /* ОСНОВНОЙ КОНТЕНТНЫЙ БЛОК (СПРАВА) */
-        .main-content {
-            margin-left: 260px; height: 100%; width: calc(100vw - 260px); padding: 40px; overflow-y: auto; position: relative;
-        }
+        .main-content { margin-left: 260px; height: 100%; width: calc(100vw - 260px); padding: 40px; overflow-y: auto; position: relative; }
         .tab-content { display: none; height: 100%; }
         .tab-content.active { display: block; }
         
-        /* Виджет статистики онлайна */
         .stats-grid { display: flex; gap: 20px; margin-bottom: 30px; }
         .stat-card { background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.04); border-top: 2px solid #ff3333; padding: 20px; border-radius: 10px; flex: 1; }
         .stat-card h4 { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         .stat-card .value { font-size: 24px; font-weight: 700; color: #fff; }
-        .stat-card .value span { font-size: 13px; color: #2ecc71; font-weight: 400; margin-left: 5px; }
 
-        /* Элементы окон и списков */
         .chat-container-box { display: flex; flex-direction: column; height: calc(100vh - 120px); }
         .chat-window { background: rgba(15, 15, 15, 0.8); border: 1px solid rgba(255, 255, 255, 0.04); flex: 1; border-radius: 8px; padding: 20px; overflow-y: auto; margin-bottom: 20px; }
         .chat-msg { margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
@@ -125,7 +111,15 @@
         .report-badge { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); padding: 5px 10px; border-radius: 6px; font-size: 11px; color: #aaa; }
         .inline-group { display: flex; gap: 20px; }
         
-        /* Таблицы управления */
+        /* Стили кастомного аватара в личном кабинете */
+        .avatar-wrapper { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .profile-avatar { width: 80px; height: 80px; border-radius: 50%; border: 2px solid #ff3333; object-fit: cover; background: #222; }
+        .btn-upload-label { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px 16px; border-radius: 6px; font-size: 12px; cursor: pointer; transition: 0.3s; }
+        .btn-upload-label:hover { background: rgba(255,51,51,0.1); border-color: #ff3333; }
+        
+        /* Прикрепленный скриншот в жалобах */
+        .attached-img { max-width: 200px; max-height: 120px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px; display: block; }
+
         table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
         th, td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
         th { color: #ff3333; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
@@ -170,13 +164,7 @@
                 <div class="input-group">
                     <label for="reg_role">Должность системы</label>
                     <select id="reg_role" required>
-                        <option value="" disabled selected>-- Выберите роль --</option>
-                        <option value="Player">Обычный игрок (Без спец-пароля)</option>
-                        <option value="Owner">👑 Высшая администрация (Owner)</option>
-                        <option value="Главный администратор">👥 Главный администратор</option>
-                        <option value="Админ 1-го ранга">🛡️ Администрация (Admin 1)</option>
-                        <option value="Модератор 1-го ранга">🔎 Модерация (Mod 1)</option>
-                        <option value="Техник">🧰 Техник</option>
+                        <!-- Заполняется динамически скриптом -->
                     </select>
                 </div>
                 <div class="input-group" id="roleKeyGroup" style="display: none;">
@@ -208,17 +196,17 @@
                 <div class="sidebar-btn" onclick="switchSidebarTab('reportFormTab', this)">📝 Подать жалобу</div>
                 <div class="sidebar-btn" onclick="switchSidebarTab('reportsListTab', this)">📋 Список жалоб (<span id="repCount">0</span>)</div>
                 <div class="sidebar-btn" onclick="switchSidebarTab('profileTab', this)">👤 Личный Кабинет</div>
-                <!-- Сюда JavaScript добавит "Панель Создателя" для Owner -->
             </div>
             
             <div class="sidebar-footer">
                 <div class="user-info-block" id="userBadge">Загрузка...</div>
-                <button id="logoutBtn" class="btn-secondary" style="margin: 0; padding: 10px;">Выйти из панели</button>
+                <button id="logoutBtn" class="btn-secondary" style="margin: 0; padding: 10px; width: 100%;">Выйти из панели</button>
             </div>
         </div>
 
         <!-- ОСНОВНОЙ КОНТЕНТНЫЙ БЛОК (СПРАВА) -->
         <div class="main-content">
+
             <!-- ВКЛАДКА: ИГРОВОЙ ЧАТ -->
             <div id="chatTab" class="tab-content active">
                 <div class="chat-container-box">
@@ -230,7 +218,7 @@
                 </div>
             </div>
 
-            <!-- ВКЛАДКА: ФОРМА ПОДАЧИ ЖАЛОБЫ -->
+            <!-- ВКЛАДКА: ФОРМА ПОДАЧИ ЖАЛОБЫ (Со скрепкой для фото) -->
             <div id="reportFormTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Подача нового обращения</h2>
                 <form id="reportForm" style="max-width: 600px;">
@@ -256,35 +244,53 @@
                     </div>
                     <div class="input-group">
                         <label for="rep_text">Подробная суть вашей жалобы</label>
-                        <textarea id="rep_text" rows="6" required placeholder="Опишите хронологию событий и укажите факты нарушений правил сервера..."></textarea>
+                        <textarea id="rep_text" rows="5" required placeholder="Опишите хронологию событий..."></textarea>
                     </div>
+                    
+                    <!-- КНОПКА-СКРЕПКА ДЛЯ ДОКАЗАТЕЛЬСТВ -->
+                    <div class="input-group">
+                        <label>Доказательства (Скриншот/Фото)</label>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <input type="file" id="rep_file" accept="image/*" style="display: none;">
+                            <label for="rep_file" class="btn-upload-label">📎 Прикрепить изображение</label>
+                            <span id="rep_file_status" style="font-size: 13px; color: #666;">Файл не выбран</span>
+                        </div>
+                    </div>
+                    
                     <button type="submit" style="max-width: 300px;">Направить жалобу</button>
                 </form>
             </div>
+
             <!-- ВКЛАДКА: СПИСОК ЖАЛОБ -->
             <div id="reportsListTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Архив зарегистрированных обращений</h2>
                 <div class="reports-list" id="reportsListWindow"></div>
             </div>
 
-            <!-- ВКЛАДКА: ЛИЧНЫЙ КАБИНЕТ И ИЗМЕНЕНИЕ ПАРОЛЯ -->
+            <!-- ВКЛАДКА: ЛИЧНЫЙ КАБИНЕТ (С изменением картинки аватара) -->
             <div id="profileTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Управление профилем</h2>
                 
-                <!-- Виджеты статистики (Видны администрации) -->
                 <div class="stats-grid" id="adminStatsGrid" style="display: none;">
                     <div class="stat-card">
                         <h4>Реальный онлайн сервера</h4>
                         <div class="value" id="livePlayersCount">0 <span>чистыми</span></div>
                     </div>
-                    <div class="stat-card">
-                        <h4>Обнаружено ботов / NPC</h4>
-                        <div class="value" style="color: #666;">0 <span>отсеяно</span></div>
-                    </div>
                 </div>
 
-                <div style="max-width: 400px; background: rgba(15,15,15,0.6); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04);">
-                    <h3 style="font-size: 15px; text-transform: uppercase; letter-spacing: 1px; color: #ff3333; margin-bottom: 20px;">Безопасность учетной записи</h3>
+                <div style="max-width: 450px; background: rgba(15,15,15,0.6); padding: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04);">
+                    <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #ff3333; margin-bottom: 25px;">Фотография профиля</h3>
+                    
+                    <!-- ИЗМЕНЕНИЕ КАРТИНКИ -->
+                    <div class="avatar-wrapper">
+                        <img src="" id="profileAvatarImg" class="profile-avatar" alt="Avatar">
+                        <div>
+                            <input type="file" id="avatar_file_input" accept="image/*" style="display: none;" onchange="updateProfileAvatar(this)">
+                            <label for="avatar_file_input" class="btn-upload-label">Сменить фотографию</label>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #ff3333; margin: 25px 0 20px 0;">Безопасность учетной записи</h3>
                     <form id="changePasswordForm">
                         <div class="input-group">
                             <label for="profile_old_pass">Действующий пароль</label>
@@ -298,26 +304,27 @@
                     </form>
                 </div>
             </div>
-            <!-- ВКЛАДКА: ПАНЕЛЬ OWNER -->
+            <!-- ВКЛАДКА: ПАНЕЛЬ OWNER (С формой добавления ролей) -->
             <div id="ownerTab" class="tab-content">
                 <h2 style="margin-bottom: 25px; letter-spacing: 1px; font-weight: 600;">Панель Создателя</h2>
                 
-                            <!-- ФОРМА ДОБАВЛЕНИЯ НОВЫХ ДОЛЖНОСТЕЙ -->
-            <h3 style="color: #ff3333; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px;">Создание новой системы / роли</h3>
-            <div style="background: rgba(15,15,15,0.6); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); margin-bottom: 25px; max-width: 500px;">
-                <form id="addRoleForm" onsubmit="createNewRoleSystem(event)">
-                    <div class="input-group">
-                        <label for="new_role_name">Название новой роли (например: Куратор)</label>
-                        <input type="text" id="new_role_name" required placeholder="Введите название">
-                    </div>
-                    <div class="input-group">
-                        <label for="new_role_key">Секретный пароль для этой роли</label>
-                        <input type="text" id="new_role_key" required placeholder="Введите секретный ключ">
-                    </div>
-                    <button type="submit" style="background: #27ae60; max-width: 200px; margin-top: 5px;">Создать роль</button>
-                </form>
-            </div>
- uppercase; margin-bottom: 15px;">Изменение паролей доступа ролей</h3>
+                <!-- ФОРМА ДОБАВЛЕНИЯ НОВЫХ ДОЛЖНОСТЕЙ -->
+                <h3 style="color: #ff3333; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px;">Создание новой системы / роли</h3>
+                <div style="background: rgba(15,15,15,0.6); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); margin-bottom: 35px; max-width: 500px;">
+                    <form id="addRoleForm">
+                        <div class="input-group">
+                            <label for="new_role_name">Название новой роли (например: Куратор)</label>
+                            <input type="text" id="new_role_name" required placeholder="Введите название">
+                        </div>
+                        <div class="input-group">
+                            <label for="new_role_key">Секретный пароль для этой роли</label>
+                            <input type="text" id="new_role_key" required placeholder="Введите секретный ключ">
+                        </div>
+                        <button type="submit" style="background: #27ae60; max-width: 200px; margin-top: 5px;">Создать роль</button>
+                    </form>
+                </div>
+
+                <h3 style="color: #ff3333; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px;">Изменение паролей доступа ролей</h3>
                 <div class="admin-table-wrapper">
                     <table id="keysTable">
                         <thead>
@@ -343,14 +350,7 @@
 
 <!-- НАЧАЛО БЛОКА СКРИПТОВ -->
 <script>
-    // Скрипт автоматического удаления старых учетных записей при первом открытии обновленного кода
-    if (!localStorage.getItem('adrenaline_wipe_v2_2026')) {
-        localStorage.removeItem('adrenaline_users');
-        localStorage.removeItem('adrenaline_reports');
-        localStorage.setItem('adrenaline_wipe_v2_2026', 'true');
-    }
-
-    // Инициализация исходных мастер-паролей для систем должностей (если их еще нет в браузере)
+    // Инициализация исходных мастер-паролей для систем должностей
     if (!localStorage.getItem('adrenaline_role_keys')) {
         const defaultKeys = {
             "Owner": "owner123",
@@ -362,7 +362,7 @@
         localStorage.setItem('adrenaline_role_keys', JSON.stringify(defaultKeys));
     }
 
-    // Иерархия для разграничения прав доступа к жалобам
+    // Базовая иерархия для разграничения прав доступа к жалобам
     const ROLE_HIERARCHY = {
         "Player": 0, "Техник": 1, "Модератор 1-го ранга": 2, 
         "Админ 1-го ранга": 3, "Главный администратор": 4, "Owner": 5
@@ -371,6 +371,7 @@
     // Глобальное состояние текущей сессии
     let currentUser = null;
     let currentRole = "Player";
+    let tempAttachedFileBase64 = ""; // Временное хранилище для прикрепляемого скриншота
 
     // Основные элементы DOM-дерева интерфейса
     const msg = document.getElementById('msg');
@@ -381,14 +382,12 @@
     const userBadge = document.getElementById('userBadge');
     const sidebarMenuContainer = document.getElementById('sidebarMenuContainer');
 
-    // Функция для вывода уведомлений и ошибок в шапку сайта
     function showMsg(text, type) {
         msg.textContent = text;
         msg.className = 'message ' + type;
         msg.style.display = 'block';
     }
 
-    // Первоначальное создание таблиц в памяти браузера
     if (!localStorage.getItem('adrenaline_users')) {
         localStorage.setItem('adrenaline_users', JSON.stringify({}));
     }
@@ -396,7 +395,27 @@
         localStorage.setItem('adrenaline_reports', JSON.stringify([]));
     }
 
-    // Переключение видимости скрытого инпута секретного пароля при регистрации
+    // ИСПРАВЛЕНИЕ: Функция динамического обновления списка ролей на форме регистрации
+    function updateRegisterRoleSelect() {
+        const selectEl = document.getElementById('reg_role');
+        if (!selectEl) return;
+        
+        selectEl.innerHTML = `
+            <option value="" disabled selected>-- Выберите роль --</option>
+            <option value="Player">Обычный игрок (Без спец-пароля)</option>
+        `;
+        
+        const currentKeys = JSON.parse(localStorage.getItem('adrenaline_role_keys')) || {};
+        
+        Object.keys(currentKeys).forEach(role => {
+            const option = document.createElement('option');
+            option.value = role;
+            option.textContent = role === "Owner" ? `👑 Высшая администрация (Owner)` : `🛡️ ${role}`;
+            selectEl.appendChild(option);
+        });
+    }
+
+    // Слушатель изменения роли на форме регистрации
     document.getElementById('reg_role').addEventListener('change', function() {
         const selectedRole = this.value;
         const keyGroup = document.getElementById('roleKeyGroup');
@@ -439,15 +458,14 @@
         if (pass !== passConfirm) { return showMsg("Пароли не совпадают!", "error"); }
         if (db[user]) { return showMsg("Этот никнейм уже занят!", "error"); }
 
-        // Проверка секретного пароля роли из базы данных в localStorage
         if (role !== "Player" && currentKeys[role]) {
             if (roleKey !== currentKeys[role]) {
                 return showMsg("Неверный секретный пароль для данной должности!", "error");
             }
         }
 
-        // Сохранение пользователя
-        db[user] = { password: pass, role: role };
+        // Сохранение пользователя с дефолтной пустой аватаркой
+        db[user] = { password: pass, role: role, avatar: "" };
         localStorage.setItem('adrenaline_users', JSON.stringify(db));
 
         showMsg(`Аккаунт успешно создан! Должность: ${role}.`, "success");
@@ -474,10 +492,10 @@
 
             userBadge.textContent = `${currentUser} [${currentRole}]`;
             authContainerBlock.style.display = 'none';
-            dashboardLayoutBlock.style.display = 'flex'; // Полноэкранный flex-макет
+            dashboardLayoutBlock.style.display = 'flex'; // Переключаемся на полноэкранный режим
             msg.style.display = 'none';
 
-            // Если зашел Owner — динамически добавляем кнопку управления в боковой сайдбар
+            // Если зашел Owner — динамически выводим премиум-кнопку управления системами в Sidebar
             const existBtn = document.getElementById('ownerTabBtn');
             if (currentRole === 'Owner' && !existBtn) {
                 const btn = document.createElement('div');
@@ -494,11 +512,19 @@
             const statsGrid = document.getElementById('adminStatsGrid');
             if (ROLE_HIERARCHY[currentRole] >= 2) {
                 statsGrid.style.display = 'flex';
-                // Симуляция генерации реального онлайна сервера "чистыми" без учета ботов
                 document.getElementById('livePlayersCount').innerHTML = 
                     Math.floor(Math.random() * (240 - 150) + 150) + ' <span>чистыми</span>';
             } else {
                 statsGrid.style.display = 'none';
+            }
+
+            // Рендерим установленную аватарку пользователя
+            const avatarImg = document.getElementById('profileAvatarImg');
+            if (db[currentUser].avatar) {
+                avatarImg.src = db[currentUser].avatar;
+            } else {
+                // Если аватарки нет — ставим серую заглушку по умолчанию
+                avatarImg.src = "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='80' height='80' viewBox='0 0 24 24' fill='%23666'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>";
             }
 
             renderChat();
@@ -530,29 +556,41 @@
         if(btnEl) btnEl.classList.add('active');
     };
 
-    // ФОРМА САМОСТОЯТЕЛЬНОГО ИЗМЕНЕНИЯ ПАРОЛЯ ИГРОКОМ
+    // ЛОГИКА ЗАГРУЗКИ И ИЗМЕНЕНИЯ АВАТАРКИ ПРОФИЛЯ
+    window.updateProfileAvatar = function(input) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const base64Image = e.target.result;
+            
+            // 1. Отображаем картинку на экране
+            document.getElementById('profileAvatarImg').src = base64Image;
+            
+            // 2. Сохраняем её в базу данных локального хранилища для текущего пользователя
+            const db = JSON.parse(localStorage.getItem('adrenaline_users'));
+            db[currentUser].avatar = base64Image;
+            localStorage.setItem('adrenaline_users', JSON.stringify(db));
+            
+            alert("Фотография вашего профиля успешно обновлена!");
+        };
+        reader.readAsDataURL(file);
+    };
+
+    // Форма самостоятельного изменения пароля
     document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const oldPass = document.getElementById('profile_old_pass').value;
         const newPass = document.getElementById('profile_new_pass').value;
         const db = JSON.parse(localStorage.getItem('adrenaline_users'));
 
-        if (db[currentUser].password !== oldPass) {
-            alert("Текущий пароль введен неверно!");
-            return;
-        }
+        if (db[currentUser].password !== oldPass) { return alert("Текущий пароль введен неверно!"); }
+        if (oldPass === newPass) { return alert("Новый пароль не должен совпадать со старым!"); }
 
-        if (oldPass === newPass) {
-            alert("Новый пароль не должен совпадать со старым!");
-            return;
-        }
-
-        // Обновляем пароль в локальной базе данных
         db[currentUser].password = newPass;
         localStorage.setItem('adrenaline_users', JSON.stringify(db));
-
-        alert("Пароль от вашего аккаунта успешно обновлен!");
+        alert("Пароль обновлен!");
         this.reset();
     });
     // ==========================================
@@ -615,10 +653,30 @@
     });
 
     // ==========================================
-    // СИСТЕМА ФИЛЬТРАЦИИ И ОТПРАВКИ ЖАЛОБ
+    // СИСТЕМА ОБРАБОТКИ ЖАЛОБ И СКРЕПКИ ФОТО
     // ==========================================
     const reportsListWindow = document.getElementById('reportsListWindow');
     const repCount = document.getElementById('repCount');
+
+    // Слушатель скрепки: Чтение выбранного скриншота в Base64
+    document.getElementById('rep_file').addEventListener('change', function() {
+        const file = this.files[0];
+        const statusEl = document.getElementById('rep_file_status');
+        
+        if (!file) {
+            tempAttachedFileBase64 = "";
+            statusEl.textContent = "Файл не выбран";
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            tempAttachedFileBase64 = e.target.result;
+            statusEl.textContent = "✓ Картинка успешно прикреплена";
+            statusEl.style.color = "#2ecc71";
+        };
+        reader.readAsDataURL(file);
+    });
 
     document.getElementById('reportForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -627,7 +685,6 @@
         const type = document.getElementById('rep_type').value;
         const target = document.getElementById('rep_target').value.trim();
         const text = document.getElementById('rep_text').value.trim();
-
         const reports = JSON.parse(localStorage.getItem('adrenaline_reports'));
 
         const newReport = {
@@ -636,6 +693,7 @@
             category: category, 
             target: target,
             text: text,
+            screenshot: tempAttachedFileBase64, // Сохраняем фото со скрепки в БД
             status: 'На рассмотрении',
             assignedTo: category === 'player' ? 'Обычная Администрация' : 'Руководство отделов',
             levelNeeded: category === 'player' ? 2 : 4 
@@ -644,11 +702,16 @@
         reports.push(newReport);
         localStorage.setItem('adrenaline_reports', JSON.stringify(reports));
 
-        alert("Жалоба успешно зарегистрирована в системе!");
+        alert("Жалоба со всеми доказательствами отправлена!");
         this.reset();
         
+        // Очищаем временную скрепку
+        tempAttachedFileBase64 = "";
+        document.getElementById('rep_file_status').textContent = "Файл не выбран";
+        document.getElementById('rep_file_status').style.color = "#666";
+        
         renderReports();
-        switchSidebarTab('reportsListTab', document.querySelectorAll('.sidebar-btn')[2]);
+        switchSidebarTab('reportsListTab', document.querySelectorAll('.sidebar-btn'));
     });
 
     window.renderReports = function() {
@@ -680,12 +743,19 @@
                     actionButton = `<button onclick="forwardReport(${rep.id})" style="width: auto; background: rgba(255,255,255,0.04); font-size: 11px; padding: 6px 12px; margin-top: 10px; border: 1px solid rgba(255,51,51,0.3); border-radius: 6px;">Передать на роль выше</button>`;
                 }
 
+                // Проверяем наличие скриншота, загруженного через скрепку
+                let imgHtml = '';
+                if (rep.screenshot) {
+                    imgHtml = `<br><strong>Доказательства:</strong><img src="${rep.screenshot}" class="attached-img" alt="Screen" onclick="window.open(this.src)">`;
+                }
+
                 card.innerHTML = `
                     <div class="report-badge">${rep.status}</div>
                     <strong style="color: #ff3333;">Жалоба №${rep.id.toString().slice(-4)}</strong><br>
                     <small style="color: #666;">Отправитель: ${rep.author} | Категория: ${rep.category === 'player' ? 'На игрока' : 'На Администратора'}</small><br>
                     <p style="margin: 10px 0; font-size: 14px; color: #eee;"><strong>Нарушитель:</strong> ${rep.target}<br><strong>Суть:</strong> ${rep.text}</p>
-                    <div style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.5px;">Допуск: <strong>${rep.assignedTo}</strong></div>
+                    ${imgHtml}
+                    <div style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-top:10px;">Допуск: <strong>${rep.assignedTo}</strong></div>
                     ${actionButton}
                 `;
                 reportsListWindow.appendChild(card);
@@ -805,6 +875,52 @@
             renderReports(); 
         }
     };
+
+    // ИСПРАВЛЕНИЕ: Прямая и явная привязка формы создания ролей
+    document.getElementById('addRoleForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (currentRole !== 'Owner') return;
+
+        const roleNameInput = document.getElementById('new_role_name');
+        const roleKeyInput = document.getElementById('new_role_key');
+        
+        const newRole = roleNameInput.value.trim();
+        const newKey = roleKeyInput.value.trim();
+
+        if (!newRole || !newKey) {
+            alert("Все поля должны быть заполнены!");
+            return;
+        }
+
+        const currentKeys = JSON.parse(localStorage.getItem('adrenaline_role_keys')) || {};
+
+        if (currentKeys[newRole] || newRole === "Player") {
+            alert("Такая роль или административная система уже существует!");
+            return;
+        }
+
+        // Записываем и обновляем данные
+        currentKeys[newRole] = newKey;
+        localStorage.setItem('adrenaline_role_keys', JSON.stringify(currentKeys));
+
+        if (!ROLE_HIERARCHY[newRole]) {
+            ROLE_HIERARCHY[newRole] = 3; 
+        }
+
+        alert(`Система роли "${newRole}" успешно создана и добавлена!`);
+        
+        roleNameInput.value = '';
+        roleKeyInput.value = '';
+
+        // Мгновенное обновление интерфейса
+        updateRegisterRoleSelect();
+        renderOwnerPanels();
+    });
+
+    // Первоначальное построение списка ролей при запуске
+    window.addEventListener('DOMContentLoaded', () => {
+        updateRegisterRoleSelect();
+    });
 </script>
 
 </body>
